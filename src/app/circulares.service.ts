@@ -15,4 +15,8 @@ export class CircularesService {
     console.log(pCircular)
     return this.http.post('http://localhost:3000/api/circulares/create', pCircular).toPromise();
   }
+
+  getCircularesByEducador(pidEducador){
+    return this.http.post('http://localhost:3000/api/circulares/fetch', {param: pidEducador}).toPromise();
+  }
 }
