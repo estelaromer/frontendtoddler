@@ -7,5 +7,12 @@ import { Injectable } from '@angular/core';
 })
 export class CircularesService {
 
-  constructor(private http: Http, private localstorageService: LocalStorageService) { }
+  constructor(private http: Http, private localstorageService: LocalStorageService) { 
+
+  }
+
+  sendCircular(pCircular){
+    console.log(pCircular)
+    return this.http.post('http://localhost:3000/api/circulares/create', pCircular).toPromise();
+  }
 }

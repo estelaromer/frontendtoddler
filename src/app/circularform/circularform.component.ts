@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { UsersService } from '../users.service';
+import { CircularesService } from '../circulares.service';
 
 @Component({
   selector: 'app-circularform',
@@ -11,10 +12,10 @@ import { UsersService } from '../users.service';
 export class CircularformComponent implements OnInit {
 
   idEducador: string;
-  clases: Array<string>
+  clases: Array<any>
   circularForm: FormGroup;
 
-  constructor(private localStorageService: LocalStorageService, private usersService: UsersService) {
+  constructor(private localStorageService: LocalStorageService, private usersService: UsersService, private circularesService: CircularesService) {
 
   }
 
@@ -28,7 +29,30 @@ export class CircularformComponent implements OnInit {
   }
 
   onSubmit(pValues) {
+    let destinatarios: Array<number>
+    destinatarios = [];
     console.log(pValues)
+    for(let elem in pValues){
+      if(pValues[elem] === true) {
+        destinatarios.push(this.clases[elem].id_clase)
+      }
+    }
+    let fecha = new Date();
+    let circular = {
+      asunto: pValues.asunto,
+      mensaje: pValues.mensaje,
+      clasesDestinatarias: destinatarios,
+      remitente: this.idEducador,
+      fechaEnvio: fecha 
+
+    }
+
+    console.log(circular)
+
+    this.circularesService.sendCircular(circular).then(res => {
+      let status = res.json();
+      console.log(status);
+    })
   }
 
 }
