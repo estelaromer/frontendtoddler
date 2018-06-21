@@ -1,0 +1,177 @@
+<div id="navbar-wrapper">
+  <header>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
+      <a class="navbar-brand" href="#">Toddler App</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              {{infoProfile?.nombre}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" [routerLink]="['profile']">Ver perfil</a>
+              <a class="dropdown-item" [routerLink]="['profile-edit']">Editar perfil</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" (click)="handleLogout()">Cerrar sesión</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+</div>
+<div id="wrapper">
+  <div id="sidebar-wrapper">
+    <aside id="sidebar">
+      <!--Sidebar si el usuario es familiar-->
+      <ul *ngIf="tipoUsuario === 'familiares'" id="sidemenu" class="sidebar-nav">
+        <li>
+          <a href="#">
+            <span class="sidebar-icon">
+              <i class="fas fa-tachometer-alt"></i>
+            </span>
+            <span class="sidebar-title">Panel de actividad</span>
+          </a>
+        </li>
+        <li>
+          <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-2">
+            <span class="sidebar-icon">
+              <i class="fa fa-users"></i>
+            </span>
+            <span class="sidebar-title">Clases</span>
+            <i class="caret fa fa-caret-down"></i>
+          </a>
+          <ul id="submenu-2" class="panel-collapse collapse panel-switch" role="menu">
+            <li>
+              <a href="#">
+                <i class="fa fa-caret-right"></i>Ver clases</a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-caret-right"></i>Nueva clase</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-3">
+            <span class="sidebar-icon">
+              <i class="fa fa-users"></i>
+            </span>
+            <span class="sidebar-title">Profesores</span>
+            <i class="caret fa fa-caret-down"></i>
+          </a>
+          <ul id="submenu-3" class="panel-collapse collapse panel-switch" role="menu">
+            <li>
+              <a href="#">
+                <i class="fa fa-caret-right"></i>Ver perfil</a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-caret-right"></i>Ver seguimientos</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">
+            <span class="sidebar-icon">
+              <i class="fa fa-database"></i>
+            </span>
+            <span class="sidebar-title">Data</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="sidebar-icon">
+              <i class="fa fa-terminal"></i>
+            </span>
+            <span class="sidebar-title">Console</span>
+          </a>
+        </li>
+      </ul>
+
+      <!--Sidebar si el usuario es educador-->
+      <ul *ngIf="tipoUsuario === 'educadores'" id="sidemenu" class="sidebar-nav">
+          <li>
+            <a [routerLink] ="['dashboard']">
+              <span class="sidebar-icon">
+                <i class="fas fa-tachometer-alt"></i>
+              </span>
+              <span class="sidebar-title">Panel de actividad</span>
+            </a>
+          </li>
+          <li>
+            <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-1">
+              <span class="sidebar-icon">
+                  <i class="fas fa-envelope"></i>
+              </span>
+              <span class="sidebar-title">Circulares</span>
+              <i class="caret fa fa-caret-down"></i>
+            </a>
+            <ul id="submenu-1" class="panel-collapse collapse panel-switch" role="menu">
+              <li>
+                <a [routerLink]="['circulares-enviadas']">
+                  <i class="fa fa-caret-right"></i>Enviadas</a>
+              </li>
+              <li>
+                <a [routerLink]="['nueva-circular']">
+                  <i class="fa fa-caret-right"></i>Nueva circular</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-2">
+              <span class="sidebar-icon">
+                  <i class="fas fa-comment"></i>
+              </span>
+              <span class="sidebar-title">Seguimientos</span>
+              <i class="caret fa fa-caret-down"></i>
+            </a>
+            <ul id="submenu-2" class="panel-collapse collapse panel-switch" role="menu">
+              <li>
+                <a [routerLink]="['seguimientos-enviados']">
+                  <i class="fa fa-caret-right"></i>Enviados</a>
+              </li>
+              <li>
+                <a [routerLink]="['nuevo-seguimiento']">
+                  <i class="fa fa-caret-right"></i>Nuevo segumiento</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+              <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-3">
+                <span class="sidebar-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </span>
+                <span class="sidebar-title">Eventos</span>
+                <i class="caret fa fa-caret-down"></i>
+              </a>
+              <ul id="submenu-3" class="panel-collapse collapse panel-switch" role="menu">
+                <li>
+                  <a [routerLink]="['eventos-enviados']">
+                    <i class="fa fa-caret-right"></i>Enviados</a>
+                </li>
+                <li>
+                  <a [routerLink]="['nuevo-evento']">
+                    <i class="fa fa-caret-right"></i>Nuevo evento</a>
+                </li>
+              </ul>
+            </li>
+          <li>
+            <a [routerLink]="['alumnos']">
+              <span class="sidebar-icon">
+                  <i class="fas fa-child"></i>
+              </span>
+              <span class="sidebar-title">Alumnos</span>
+            </a>
+          </li>
+        </ul>
+    </aside>
+  </div>
+  <div class="container"><router-outlet></router-outlet></div>
+</div>

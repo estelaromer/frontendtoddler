@@ -1,0 +1,32 @@
+<div class="container">
+
+  <form novalidate #circularForm="ngForm" (ngSubmit)="onSubmit(circularForm.value)">
+    <label>Clases</label>
+    <input type="checkbox" name="0" ngModel />Todas
+    <div *ngFor="let clase of clases">
+        <input type="checkbox" name="{{clase?.id_clase}}" ngModel />{{clase?.nombre}}
+    </div>
+    <label>Asunto</label>
+    <input type="text" name="asunto" ngModel>
+    <textarea name="mensaje" cols="30" rows="10" ngModel>Mensaje</textarea>
+    <button type="submit">Enviar</button>
+   </form>
+    
+ 
+   <!--<form [formGroup]="circularForm" (ngSubmit)="handleEnviarCircular(circularForm?.value)"> 
+    <label>Clases</label>
+    <input type="checkbox" name="todas" formControlName="todas"/>Todas
+    <input type="checkbox" name="chupetes" formControlName="chupetes">Chupetes
+    Esto es un ngFor con los nombres de las clases que te devuelve la query
+    <div *ngFor="let clase of clases">
+      <input type="checkbox" name="{{clase?.nombre}}" formControlName="clase">{{clase?.nombre}}
+    </div>
+
+
+    <label>Asunto</label>
+    <input type="text" name="asunto" formControlName="asunto">
+    <textarea name="mensaje" cols="30" rows="10">Mensaje</textarea>
+
+    <input type="submit" class="button" value="Enviar">
+  </form>-->
+</div>

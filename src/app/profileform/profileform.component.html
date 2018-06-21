@@ -1,0 +1,8 @@
+<form [formGroup]="profileForm" (ngSubmit)="handleProfileForm(profileForm.value)">
+  <input type="text" name="nombre" formControlName="nombre" placeholder="Nombre"/>
+  <input type="text" name="apellidos" formControlName="apellidos" placeholder="Apellidos"/>
+  <input type="email" name="email" formControlName="email" placeholder="Correo"/>
+  <input type="tel" name="telefono" formControlName="telefono" placeholder="Teléfono"/>
+  <input type="file" (change)="handleFileChange($event)" name="imagen" formControlName="imagen" />
+  <input type="submit" value="ENVIAR" />
+</form>

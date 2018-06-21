@@ -1,0 +1,40 @@
+<h1>Toddler</h1>
+<h2 *ngIf="tipoUsuario === 'educadores'">La comunicación con las familias nunca fue tan fácil.</h2>
+<h2 *ngIf="tipoUsuario === 'familiares'">La tranquilidad de saber que están bien.</h2>
+<h3>Crea tu cuenta gratuita.</h3>
+<form [formGroup]="signupForm" (ngSubmit)="handleSignup(signupForm?.value)">
+  <input *ngIf="tipoUsuario === 'educadores'" type="text" name="codigo" formControlName="codigo" placeholder="Código de centro" />
+  <input *ngIf="tipoUsuario === 'familiares'" type="text" name="codigo" formControlName="codigo" placeholder="Código de alumno" />
+  <small class="error text-left" *ngIf="signupForm.controls.codigo.errors?.required && signupForm.controls.codigo.dirty">Campo obligatorio</small>
+  <small *ngIf="codigoIncorrecto">Código incorrecto</small>
+  
+  <input type="text" name="nombre" formControlName="nombre" placeholder="Nombre" />
+  <small class="error text-left" *ngIf="signupForm.controls.nombre.errors?.required && signupForm.controls.nombre.dirty">Campo obligatorio</small>
+  <small class="error text-left" *ngIf="(signupForm.controls.nombre.errors?.minlength && signupForm.controls.nombre.touched)">Nombre demasiado corto</small>
+  <small class="error text-left" *ngIf="(signupForm.controls.nombre.errors?.maxlength && signupForm.controls.nombre.touched)">Nombre demasiado largo</small>
+
+  <input type="text" name="apellidos" formControlName="apellidos" placeholder="Apellidos" />
+  <small class="error text-left" *ngIf="signupForm.controls.apellidos.errors?.required && signupForm.controls.apellidos.dirty">Campo obligatorio</small>
+  <small class="error text-left" *ngIf="(signupForm.controls.apellidos.errors?.minlength && signupForm.controls.apellidos.touched)">Apellidos demasiado corto</small>
+  <small class="error text-left" *ngIf="(signupForm.controls.apellidos.errors?.maxlength && signupForm.controls.apellidos.touched)">Apellidos demasiado largo</small>
+  
+  <input type="tel" name="telefono" formControlName="telefono" placeholder="Número de teléfono" />
+  <small class="error text-left" *ngIf="signupForm.controls.telefono.errors?.required && signupForm.controls.telefono.dirty">Campo obligatorio</small>
+  <small class="error text-left" *ngIf="(signupForm.controls.telefono.errors?.minlength || signupForm.controls.telefono.errors?.maxlength) && signupForm.controls.telefono.touched">Número inválido</small>
+  
+  <input type="email" name="email" formControlName="email" placeholder="Correo electrónico" />
+  <small class="error text-left" *ngIf="signupForm.controls.email.errors?.required && signupForm.controls.email.dirty">Campo obligatorio</small>
+  <small class="error text-left" *ngIf="signupForm.controls.email.errors?.pattern && signupForm.controls.email.touched">Dirección de correo no válida</small>
+  <small *ngIf="yaRegistrado">Esta dirección ya pertenece a una cuenta.</small>
+  
+  <input type="password" name="password" formControlName="password" placeholder="Contraseña" />
+  <small class="error text-left">8 caracteres, al menos una mayúscula o un número.</small>
+  <small class="error text-left" *ngIf="signupForm.controls.password.errors?.required && signupForm.controls.password.dirty">Campo obligatorio</small>
+  <small class="error text-left" *ngIf="signupForm.controls.password.errors?.pattern && signupForm.controls.password.touched">Contraseña no válida</small>
+  
+  <input type="password" name="passwordRepeat" formControlName="passwordRepeat" placeholder="Repetir contraseña" />
+  <small *ngIf="(signupForm.controls.contrasena.value !== signupForm.controls.contrasenaRepeat.value)&&signupForm.controls.contrasena.touched">
+    Las contraseñas no coinciden</small>
+  <input type="submit" [disabled]="!signupForm.valid" value="Registrase" />
+  
+</form>
