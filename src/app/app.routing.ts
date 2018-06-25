@@ -14,6 +14,7 @@ import { CircularesComponent } from "./circulares/circulares.component";
 import { CircularformComponent } from "./circularform/circularform.component";
 import { SeguimientosComponent } from "./seguimientos/seguimientos.component";
 import { SeguimientoformComponent } from "./seguimientoform/seguimientoform.component";
+import { CircularesfamiliasComponent } from "./circularesfamilias/circularesfamilias.component";
 
 export const appRoutes: Routes = [
     { path: '', component: HomepageComponent },
@@ -30,5 +31,6 @@ export const appRoutes: Routes = [
         { path: 'nueva-circular', component: CircularformComponent },
         { path: 'seguimientos-enviados', component: SeguimientosComponent},
         { path: 'nuevo-seguimiento', component: SeguimientoformComponent},
+        { path: 'circulares', component: CircularesfamiliasComponent}
     ] }
  ]

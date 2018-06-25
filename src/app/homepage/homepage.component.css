@@ -1,0 +1,36 @@
+.homepage{
+    background-image: url('./../../assets/img/hero.jpg');
+    background-size: cover;
+    height: 100vh;
+    font-family: Lato, sans-serif;
+    color: #fff;
+}
+
+.intro{
+    width: 60%;
+}
+
+.enlaces{
+    width: 50%;
+    margin: auto;
+}
+
+.enlace {
+    display: block;
+    margin: 10px;
+    width: 120px;
+    color: #fff;
+    font-weight: 700;
+    border: 3px solid #fff;
+}
+
+.enlace:hover {
+    background-color: #F4C2C2;
+}
+
+@media screen and (min-width: 992px){
+    .enlace{
+        display: inline-block;
+    }
+}
+

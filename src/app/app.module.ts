@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from "@angular/router";
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
 
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -23,7 +25,9 @@ import { CircularesComponent } from './circulares/circulares.component';
 import { CircularformComponent } from './circularform/circularform.component';
 import { SeguimientoformComponent } from './seguimientoform/seguimientoform.component';
 import { SeguimientosComponent } from './seguimientos/seguimientos.component';
+import { CircularesfamiliasComponent } from './circularesfamilias/circularesfamilias.component';
 
+registerLocaleData(localeEs, 'es-ES');
 
 @NgModule({
   declarations: [
@@ -41,7 +45,8 @@ import { SeguimientosComponent } from './seguimientos/seguimientos.component';
     CircularesComponent,
     CircularformComponent,
     SeguimientoformComponent,
-    SeguimientosComponent
+    SeguimientosComponent,
+    CircularesfamiliasComponent
   ],
   imports: [
     BrowserModule,
@@ -58,4 +63,10 @@ import { SeguimientosComponent } from './seguimientos/seguimientos.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule { 
+  constructor(){
+    registerLocaleData(localeEs, 'es')
+  }
+}
+

@@ -46,6 +46,7 @@ export class SignupComponent implements OnInit {
           this.yaRegistrado = true;
         }
       } else {
+        console.log(status)
         this.router.navigate(['login']);
       }
     })

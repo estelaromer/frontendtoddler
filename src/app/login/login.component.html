@@ -1,21 +1,40 @@
-<h1>Toddler</h1>
-<p>Inicio de sesión</p>
-<form [formGroup]="loginForm" (ngSubmit)="handleLogin(loginForm?.value)">
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" formControlName="tipoUsuario" name="tipoUsuario" id="inlineRadio1" value="educadores">
-    <label class="form-check-label" for="inlineRadio1">Educadores</label>
+<div class="loginpage">
+  <div class="contenedor bg-light p-3">
+    <h1 class="text-center">Toddler</h1>
+    <h2 class="text-center">Inicio de sesión</h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="handleLogin(loginForm?.value)">
+      <div class="text-center">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" formControlName="tipoUsuario" name="tipoUsuario" id="inlineRadio1" value="educadores">
+          <label class="form-check-label" for="inlineRadio1">Educadores</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" formControlName="tipoUsuario" name="tipoUsuario" id="inlineRadio2" value="familiares">
+          <label class="form-check-label" for="inlineRadio2">Familiares</label>
+        </div>
+      </div>
+
+      <div class="campos">
+        <div class="form-group">
+          <label class="d-block">Correo electrónico*</label>
+          <input type="email" class="form-control" name="email" formControlName="email" placeholder="tucorreo@ejemplo.com" />
+          <small class="error text-left" *ngIf="loginForm.controls.email.errors?.required && loginForm.controls.email.dirty">
+            Campo obligatorio</small>
+          <small class="error text-left" *ngIf="loginForm.controls.email.errors?.pattern && loginForm.controls.email.touched">
+            Dirección de correo no válida</small>
+          <small class="error text-left" *ngIf="noRegistrado">Esta dirección de correo electrónico no pertenece a ninguna cuenta.</small>
+        </div>
+
+        <div class="form-group">
+          <label class="d-block">Contraseña*</label>
+          <input type="password" class="form-control" name="password" formControlName="password" placeholder="Tu contraseña" />
+          <small class="error text-left" *ngIf="contrasenaIncorrecta">Contraseña incorrecta</small>
+        </div>
+        <div>
+          <input class="btn btn-primary btn-block" type="submit" [disabled]="!loginForm.valid" value="Entrar" />
+        </div>
+      </div>
+    </form>
   </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" formControlName="tipoUsuario" name="tipoUsuario" id="inlineRadio2" value="familiares">
-    <label class="form-check-label" for="inlineRadio2">Familiares</label>
-  </div>
-  <input type="email" name="email" formControlName="email" placeholder="tucorreo@ejemplo.com" />
-  <small class="error text-left" *ngIf="loginForm.controls.email.errors?.required && loginForm.controls.email.dirty">
-    Campo obligatorio</small>
-  <small class="error text-left" *ngIf="loginForm.controls.email.errors?.pattern && loginForm.controls.email.touched">
-    Dirección de correo no válida</small>
-  <small class="error text-left" *ngIf="noRegistrado">Esta dirección de correo electrónico no pertenece a ninguna cuenta.</small>
-  <input type="password" name="password" formControlName="password" placeholder="Tu contraseña" />
-  <small class="error text-left" *ngIf="contrasenaIncorrecta">Contraseña incorrecta</small>
-  <input type="submit" [disabled]="!loginForm.valid" value="Entrar" />
-</form>
+</div>

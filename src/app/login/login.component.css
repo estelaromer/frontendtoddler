@@ -1,0 +1,29 @@
+.loginpage{
+    background-color: #F4C2C2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.contenedor{
+    width: 80%;
+}
+
+.campos{
+    width: 90%;
+    margin: auto;
+    padding: 2%;
+}
+
+small.error{
+    color: #f00;
+}
+
+@media screen and (min-width: 576px){
+    .campos{
+        width: 50%;
+        margin: auto;
+        padding: 2%;
+    }
+}
