@@ -26,6 +26,7 @@ import { CircularformComponent } from './circularform/circularform.component';
 import { SeguimientoformComponent } from './seguimientoform/seguimientoform.component';
 import { SeguimientosComponent } from './seguimientos/seguimientos.component';
 import { CircularesfamiliasComponent } from './circularesfamilias/circularesfamilias.component';
+import { AnadiralumnoComponent } from './anadiralumno/anadiralumno.component';
 
 registerLocaleData(localeEs, 'es-ES');
 
@@ -46,7 +47,8 @@ registerLocaleData(localeEs, 'es-ES');
     CircularformComponent,
     SeguimientoformComponent,
     SeguimientosComponent,
-    CircularesfamiliasComponent
+    CircularesfamiliasComponent,
+    AnadiralumnoComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,17 @@
-<p>
-  circularesfamilias works!
-</p>
+<div class="container">
+
+    <div *ngFor="let mensaje of circulares">
+        <div class="separador">
+            <div class="card text-center">
+                <div class="card-header text-left">
+                    {{mensaje?.asunto}}
+                </div>
+                <div class="card-body text-left">
+                    <p class="card-text">{{mensaje?.mensaje}}</p>
+                </div>
+                <div class="card-footer text-right">{{mensaje?.fecha | date: 'dd/MM/yyyy HH:mm'}}</div>
+            </div>
+        </div>
+
+    </div>
+</div>

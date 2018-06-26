@@ -1,3 +1,13 @@
-<p>
-  alumnos works!
-</p>
+<div class="container">
+
+  <app-anadiralumno [idFamiliar]="familiarId"></app-anadiralumno>
+
+  <div *ngFor="let alumno of alumnos">
+
+    <p>{{alumno?.nombre}} {{alumno?.apellidos}}</p>
+    <p>{{alumno?.fecha_nacimiento | date: 'dd/MM/yyyy'}}</p>
+    <p>{{alumno?.hora_entrada}}</p>
+    <p>{{alumno?.hora_salida}}</p>
+
+</div>
+</div>

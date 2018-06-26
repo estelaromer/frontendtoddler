@@ -1,0 +1,9 @@
+<div class="container">
+  <form novalidate #anadirAlumnoForm="ngForm" (ngSubmit)="onSubmit(anadirAlumnoForm.value)">
+    <div class="form-inline">
+      <label class="mr-1">Nuevo alumno</label>
+      <input type="text" class="form-control mr-1" name="codigo" placeholder="Código de alumno" ngModel>
+      <button class="btn btn-primary mr-1" type="submit">Añadir</button>
+    </div>
+  </form>
+</div>

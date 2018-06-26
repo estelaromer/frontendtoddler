@@ -17,10 +17,11 @@ export class CircularesService {
   }
 
   getCircularesByEducador(pidEducador){
-    return this.http.post('http://localhost:3000/api/circulares/fetch', {param: pidEducador}).toPromise();
+    return this.http.post('http://localhost:3000/api/circulares/fetchbyeducador', {param: pidEducador}).toPromise();
   }
 
   getCircularesByFamiliar(pidFamiliar){
-    return this.http.post('http://localhost:3000/api/circulares/fetch', {param: pidFamiliar}).toPromise();
+    return this.http.post('http://localhost:3000/api/circulares/fetchbyfamiliar', {param: pidFamiliar}).toPromise();
   }
+
 }
