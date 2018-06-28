@@ -29,7 +29,7 @@ export const appRoutes: Routes = [
         { path: 'nuevo-evento', component: EventoformComponent },
         { path: 'circulares-enviadas', component: CircularesComponent},
         { path: 'nueva-circular', component: CircularformComponent },
-        { path: 'seguimientos-enviados', component: SeguimientosComponent},
+        { path: 'seguimientos/:tipo', component: SeguimientosComponent},
         { path: 'nuevo-seguimiento', component: SeguimientoformComponent},
         { path: 'circulares', component: CircularesfamiliasComponent}
     ] }

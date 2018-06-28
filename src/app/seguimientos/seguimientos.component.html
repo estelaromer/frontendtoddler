@@ -1,3 +1,47 @@
-<p>
-  seguimientos works!
-</p>
+<div *ngIf="tipoUsuario === 'educadores'">
+  <div *ngIf="tipoSeguimiento === 'recibidos'">
+    <div *ngFor="let seguimiento of seguimientos">
+      <p>{{seguimiento?.tipo}}</p>
+      <p>{{seguimiento?.nombre}} {{seguimiento?.apellidos}}</p>
+      <p>{{seguimiento?.fecha | date: 'dd/MM/yyyy HH:mm'}}</p>
+      <p>{{seguimiento?.comentarios}}</p>
+    </div>
+  </div>
+
+  <div *ngIf="tipoSeguimiento === 'enviados'">
+    <div *ngFor="let seguimiento of seguimientos">
+      <p>{{seguimiento?.nombreAlumno}} {{seguimiento?.apellidos}}</p>
+      <p>{{seguimiento?.nombreClase}}</p>
+      <p>{{seguimiento?.fecha | date: 'dd/MM/yyyy HH:mm'}}</p>
+      <p>{{seguimiento?.tipo}}</p>
+      <p>{{seguimiento?.subtipo}}</p>
+      <p>{{seguimiento?.estado}}</p>
+      <p>{{seguimiento?.comentarios}}</p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="tipoUsuario === 'familiares'">
+  <div *ngIf="tipoSeguimiento === 'recibidos'">
+    <div *ngFor="let seguimiento of seguimientos">
+      <p>{{seguimiento?.nombre}}</p>
+      <p>{{seguimiento?.fecha | date: 'dd/MM/yyyy HH:mm'}}</p>
+      <p>{{seguimiento?.tipo}}</p>
+      <p *ngIf="seguimiento?.tipo ==='aviso'">{{seguimiento?.subtipo}}</p>
+      <p *ngIf="seguimiento?.tipo ==='aviso'">{{seguimiento?.estado}}</p>
+      <p>{{seguimiento?.comentarios}}</p>
+    </div>
+  </div>
+
+  <div *ngIf="tipoSeguimiento === 'enviados'">
+    <div *ngFor="let seguimiento of seguimientos">
+        <p>{{seguimiento?.nombreAlumno}} {{seguimiento?.apellidos}}</p>
+        <p>{{seguimiento?.nombreClase}}</p>
+        <p>{{seguimiento?.fecha | date: 'dd/MM/yyyy HH:mm'}}</p>
+        <p>{{seguimiento?.tipo}}</p>
+        <p *ngIf="seguimiento?.tipo ==='aviso'">{{seguimiento?.subtipo}}</p>
+        <p *ngIf="seguimiento?.tipo ==='aviso'">{{seguimiento?.estado}}</p>
+        <p>{{seguimiento?.comentarios}}</p>
+    </div>
+  </div>
+</div>

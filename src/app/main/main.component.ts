@@ -27,7 +27,12 @@ export class MainComponent implements OnInit {
 
   handleLogout() {
     this.localstorageService.clearAll();
-    this.router.navigate([''])
+    this.router.navigate(['']);
+  }
+
+  obtener(ptiposeguimiento){
+    this.localstorageService.set('tipoSeguimiento', ptiposeguimiento);
+    this.router.navigate(['app', 'seguimientos', ptiposeguimiento]);
   }
 
 }

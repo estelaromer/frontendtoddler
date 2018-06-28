@@ -1,3 +1,107 @@
-<p>
-  seguimientoform works!
-</p>
+<div class="container">
+  <div *ngIf="tipoUsuario === 'familiares'">
+    <form novalidate #seguimientoForm="ngForm" (ngSubmit)="onSubmit(seguimientoForm.value)">
+      <div class="text-center">
+        <label class="d-block">Seguimiento para alumno</label>
+        <div class="form-check form-check-inline" *ngFor="let nombreAlumno of nombreAlumnos, let i=index">
+          <input class="form-check-input" type="checkbox" name="{{i}}" ngModel />
+          <label class="form-check-label" for="inlineRadio2">{{nombreAlumno}}</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="d-block">Mensaje</label>
+        <textarea class="form-control" name="mensaje" cols="30" rows="10" ngModel>Mensaje</textarea>
+      </div>
+      <button class="btn btn-primary btn-block" type="submit">Enviar</button>
+    </form>
+  </div>
+
+  <div *ngIf="tipoUsuario === 'educadores'">
+
+    <form novalidate #seguimientoForm="ngForm" (ngSubmit)="onSubmit(seguimientoForm.value)">
+
+      <div class="form-group">
+        <label>Alumno</label>
+        <select class="form-control" name="alumno" ngModel>
+          <option *ngFor="let alumno of alumnos" [value]="alumno?.id_alumno">{{alumno?.nomAlumno}} {{alumno?.apellidos}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Tipo</label>
+        <select #tipo class="form-control" name="tipo" (change)="handleChange($event)" ngModel>
+          <option value="alimentacion">Alimentacion</option>
+          <option value="descanso">Descanso</option>
+          <option value="higiene">Higiene</option>
+          <option value="aviso">Aviso</option>
+        </select>
+
+      </div>
+      <div [ngSwitch]="tipo.value">
+        <div *ngSwitchCase="'alimentacion'">
+          <div class="form-group">
+            <label>Subtipo</label>
+            <select class="form-control" name="subtipo" ngModel>
+              <option value="desayuno">Desayuno</option>
+              <option value="comida">Comida</option>
+              <option value="merienda">Merienda</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Estado</label>
+            <select class="form-control" name="estado" ngModel>
+              <option value="todo">Todo</option>
+              <option value="algo">Algo</option>
+              <option value="poco">Poco</option>
+            </select>
+          </div>
+        </div>
+
+        <div *ngSwitchCase="'descanso'">
+          <div class="form-group">
+            <label>Subtipo</label>
+            <select class="form-control" name="subtipo" ngModel>
+              <option value="manana">Mañana</option>
+              <option value="tarde">Tarde</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Estado</label>
+            <select class="form-control" name="estado" ngModel>
+              <option value="bien">Bien</option>
+              <option value="regular">Regular</option>
+              <option value="mal">Mal</option>
+            </select>
+          </div>
+        </div>
+
+        <div *ngSwitchCase="'higiene'">
+          <div class="form-group">
+            <label>Subtipo</label>
+            <select class="form-control" name="subtipo" ngModel>
+              <option value="pis">Pis</option>
+              <option value="caca">Caca</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Estado</label>
+            <select class="form-control" name="estado" ngModel>
+              <option value="mucho">Poco</option>
+              <option value="poco">Mucho</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Comentarios</label>
+          <textarea name="" class="form-control" cols="30" rows="10" name="comentarios" ngModel></textarea>
+        </div>
+      </div>
+
+      <input type="submit" class="btn btn-primary btn-block" placeholder="Enviar" />
+
+    </form>
+  </div>
+</div>

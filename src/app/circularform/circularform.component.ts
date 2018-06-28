@@ -3,6 +3,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { UsersService } from '../users.service';
 import { CircularesService } from '../circulares.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-circularform',
@@ -15,7 +17,7 @@ export class CircularformComponent implements OnInit {
   clases: Array<any>
   circularForm: FormGroup;
 
-  constructor(private localStorageService: LocalStorageService, private usersService: UsersService, private circularesService: CircularesService) {
+  constructor(private router: Router, private localStorageService: LocalStorageService, private usersService: UsersService, private circularesService: CircularesService) {
 
   }
 
@@ -52,6 +54,9 @@ export class CircularformComponent implements OnInit {
     this.circularesService.sendCircular(circular).then(res => {
       let status = res.json();
       console.log(status);
+      if (status.success){
+        this.router.navigate(['app', 'circulares-enviadas'])
+      }
     })
   }
 

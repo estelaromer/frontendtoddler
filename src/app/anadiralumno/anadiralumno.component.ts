@@ -17,7 +17,9 @@ export class AnadiralumnoComponent implements OnInit {
   }
 
   onSubmit(codigo){
-    console.log(codigo);
+    this.alumnosService.linkarAlumnoFamiliar(codigo, this.idFamiliar).then((res) => {
+      console.log(res.json());
+    })
   }
 
 }

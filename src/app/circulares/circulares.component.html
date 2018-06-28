@@ -1,5 +1,6 @@
 <div class="container">
-    <select (change)="getCircularesByClassName($event.target.value)">
+    <label>Filtrar por clase</label>
+    <select class="form-control" (change)="getCircularesByClassName($event.target.value)">
         <option value="Todas">Todas</option>
         <option *ngFor="let clase of clases" value="{{clase}}">{{clase}}</option>
     </select>

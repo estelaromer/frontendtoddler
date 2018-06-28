@@ -12,4 +12,12 @@ export class AlumnosService {
   getAlumnosByFamiliarId(pidFamiliar){
     return this.http.post('http://localhost:3000/api/alumnos/fetchbyfamiliar', {param: pidFamiliar}).toPromise();
   }
+
+  linkarAlumnoFamiliar(pCodigo, pidFamiliar){
+    return this.http.post('http://localhost:3000/api/alumnos/linkar', {codigoAlumno: pCodigo, idFamiliar: pidFamiliar}).toPromise()
+  }
+
+  getAlumnosByEducadorId(pidEducador){
+    return this.http.post('http://localhost:3000/api/alumnos/fetchbyeducador', {param: pidEducador}).toPromise();
+  }
 }

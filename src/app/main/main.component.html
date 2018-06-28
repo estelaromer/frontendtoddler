@@ -1,28 +1,29 @@
 <div id="navbar-wrapper">
   <header>
-      <nav class="navbar navbar-expand navbar-light bg-light fixed-top">
-          <a class="navbar-brand" href="#">Toddler App</a>
-        
-          <div class="lista collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-0">
-              <li class="tipo nav-item">
-                <a *ngIf="tipoUsuario === 'familiares'" class="nav-link">F</a>
-                <a *ngIf="tipoUsuario === 'educadores'" class="nav-link">E</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nombre nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{infoProfile?.nombre}}</a>
-    
-                <div class="izquierda dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" [routerLink]="['profile']">Ver perfil</a>
-                  <a class="dropdown-item" [routerLink]="['profile-edit']">Editar perfil</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" (click)="handleLogout()">Cerrar sesión</a>
-                </div>
-              </li>
+    <nav class="navbar navbar-expand navbar-light bg-light fixed-top">
+      <a class="navbar-brand" href="#">Toddler App</a>
 
-            </ul>
-          </div>
-        </nav>
+      <div class="lista collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-0">
+          <li class="tipo nav-item">
+            <a *ngIf="tipoUsuario === 'familiares'" class="nav-link">F</a>
+            <a *ngIf="tipoUsuario === 'educadores'" class="nav-link">E</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nombre nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">{{infoProfile?.nombre}}</a>
+
+            <div class="izquierda dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" [routerLink]="['profile']">Ver perfil</a>
+              <a class="dropdown-item" [routerLink]="['profile-edit']">Editar perfil</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" (click)="handleLogout()">Cerrar sesión</a>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </nav>
   </header>
 </div>
 <div id="wrapper">
@@ -56,11 +57,11 @@
           </a>
           <ul id="submenu-2" class="panel-collapse collapse panel-switch" role="menu">
             <li>
-              <a [routerLink]="['seguimientos-enviados']">
+              <a (click)="obtener('enviados')">
                 <i class="fa fa-caret-right"></i>Enviados</a>
             </li>
             <li>
-              <a [routerLink]="['seguimientos-recibidos']">
+              <a (click)="obtener('recibidos')">
                 <i class="fa fa-caret-right"></i>Recibidos</a>
             </li>
             <li>
@@ -69,14 +70,14 @@
             </li>
           </ul>
         </li>
-        <li>
+        <!--<li>
           <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-3">
             <span class="sidebar-icon">
               <i class="fas fa-calendar-alt"></i>
             </span>
             <span class="sidebar-title">Eventos</span>
           </a>
-        </li>
+        </li>-->
         <li>
           <a [routerLink]="['alumnos']">
             <span class="sidebar-icon">
@@ -126,16 +127,20 @@
           </a>
           <ul id="submenu-2" class="panel-collapse collapse panel-switch" role="menu">
             <li>
-              <a [routerLink]="['seguimientos-enviados']">
+              <a (click)="obtener('enviados')">
                 <i class="fa fa-caret-right"></i>Enviados</a>
             </li>
             <li>
+              <a (click)="obtener('recibidos')">
+                <i class="fa fa-caret-right"></i>Recibidos</a>
+            </li>
+            <li>
               <a [routerLink]="['nuevo-seguimiento']">
-                <i class="fa fa-caret-right"></i>Nuevo segumiento</a>
+                <i class="fa fa-caret-right"></i>Nuevo seguimiento</a>
             </li>
           </ul>
         </li>
-        <li>
+        <!--<li>
           <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-3">
             <span class="sidebar-icon">
               <i class="fas fa-calendar-alt"></i>
@@ -153,7 +158,7 @@
                 <i class="fa fa-caret-right"></i>Nuevo evento</a>
             </li>
           </ul>
-        </li>
+        </li>-->
         <li>
           <a [routerLink]="['alumnos']">
             <span class="sidebar-icon">
